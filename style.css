@@ -4,10 +4,16 @@
 
   --clr-neutral-100: hsl(0, 6%, 24%);
 
-  --clr-gradient-100: Linear, 135deg, from hsl(0, 0%, 100%),
-    to hsl(0, 100%, 98%);
-
-  --clr-gradient-200: Linear, 135deg, from hsl(0, 80%, 86%), to hsl(0, 74%, 74%);
+  --clr-gradient-100: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%),
+    hsl(0, 100%, 98%)
+  );
+  --clr-gradient-200: linear-gradient(
+    135deg,
+    hsl(0, 80%, 86%),
+    hsl(0, 74%, 74%)
+  );
 
   --ff-primary-100: "Josefin Sans", sans-serif;
 
@@ -69,7 +75,6 @@ a:not([class]) {
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
   display: block;
 }
 /* Inherit fonts for inputs and buttons */
@@ -120,9 +125,14 @@ main {
   text-align: center;
 }
 
-header {
+main header {
   padding: 32px 16px 32px 16px;
   width: 100%;
+}
+
+main img {
+  width: min(100%, 420px);
+  margin: 0 auto;
 }
 
 .hero_logo {
@@ -135,4 +145,72 @@ main p {
   color: var(--clr-primary-100);
   margin-top: 16px;
   font-size: var(--fs-500);
+  font-weight: var(--fw-regular);
+}
+
+footer {
+  margin: 0 16px;
+  width: min(100%, 350px);
+  position: relative;
+}
+
+form {
+  margin-top: 32px;
+  width: min(100%, 350px);
+  display: flex;
+  justify-content: center;
+}
+
+form input {
+  border-radius: 25px;
+  border: 1px solid var(--clr-primary-100);
+  padding: 8px 24px;
+  color: var(--clr-primary-100);
+  width: min(100%, 320px);
+  height: 48px;
+  margin: 0 16px;
+}
+
+body {
+  background-color: var(--clr-gradient-100);
+}
+
+form button {
+  border-radius: 25px;
+  border: none;
+  background: var(--clr-gradient-200);
+  color: white;
+  font-family: var(--ff-primary-100);
+  width: 64px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 1000;
+  position: absolute;
+  right: 16px;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  background-image: url("images/icon-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 55%;
+  top: 50%;
+  width: 64px;
+  height: 46px;
+  transform: translate(-50%, -50%);
+}
+
+input[type="email"]::placeholder {
+  color: var(--clr-primary-100);
+  opacity: 50%;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+}
+
+form input[type="email"]:focus {
+  border: 2px solid var(--clr-primary-200); /* Example: change border color and width on focus */
+  outline: none; /* Optional: Removes the default focus outline */
+  /* Add any additional styles you want to apply on focus */
 }
