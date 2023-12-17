@@ -40,7 +40,7 @@
           launch deals.
         </p>
         <footer>
-          <form>
+          <form novalidate>
             <input
               type="email"
               id="email"
@@ -48,10 +48,15 @@
               placeholder="Email Address"
               required
             />
+            <div class="validation-message" id="email-validation-message">
+              Please provide a valid email.
+            </div>
             <button type="submit"></button>
           </form>
         </footer>
       </div>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>

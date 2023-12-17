@@ -70,6 +70,7 @@ body {
 }
 /* A elements that don't have a class get default styles */
 a:not([class]) {
+  -webkit-text-decoration-skip: ink;
   text-decoration-skip-ink: auto;
 }
 /* Make images easier to work with */
@@ -92,7 +93,9 @@ select {
   *,
   *::before,
   *::after {
+    -webkit-animation-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
@@ -160,16 +163,19 @@ form {
   width: min(100%, 350px);
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  text-align: left;
 }
 
 form input {
   border-radius: 25px;
-  border: 1px solid var(--clr-primary-100);
+  border: 2px solid var(--clr-primary-100);
   padding: 8px 24px;
   color: var(--clr-primary-100);
   width: min(100%, 320px);
   height: 48px;
-  margin: 0 16px;
+
+  position: relative;
 }
 
 body {
@@ -186,8 +192,9 @@ form button {
   height: 48px;
   cursor: pointer;
   z-index: 1000;
+  top: 0;
   position: absolute;
-  right: 16px;
+  right: 0;
 }
 
 button::after {
@@ -205,6 +212,34 @@ button::after {
 
 form button:hover {
   background: hsl(0, 57%, 87%);
+}
+
+input[type="email"]::-webkit-input-placeholder {
+  color: var(--clr-primary-100);
+  opacity: 50%;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+}
+
+input[type="email"]::-moz-placeholder {
+  color: var(--clr-primary-100);
+  opacity: 50%;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+}
+
+input[type="email"]:-ms-input-placeholder {
+  color: var(--clr-primary-100);
+  opacity: 50%;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+}
+
+input[type="email"]::-ms-input-placeholder {
+  color: var(--clr-primary-100);
+  opacity: 50%;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
 }
 
 input[type="email"]::placeholder {
@@ -232,9 +267,28 @@ main::after {
   position: absolute;
   grid-row: 1/3;
   grid-column: 1/3;
-
   z-index: -1000;
   opacity: 100%;
+}
+
+footer {
+  width: 100%;
+  justify-self: center;
+}
+
+form {
+  margin: 32px auto 0 auto;
+  width: min(100%, 320px);
+  position: relative;
+}
+
+footer {
+  margin: 32px 0 0 0;
+  padding: 0 16px;
+}
+
+form {
+  margin: 0 auto;
 }
 
 @media (min-width: 1168px) {
@@ -277,6 +331,7 @@ main::after {
 
   form {
     width: 318px;
+    margin: 32px 0 0 0;
   }
 
   form input {
@@ -291,4 +346,20 @@ main::after {
   main header {
     padding: 32px 0 32px 0;
   }
+}
+
+form input[type="email"] {
+  color: #333333; /* Dark gray color */
+  /* Other styles */
+}
+
+.validation-message {
+  color: var(--clr-primary-200);
+  visibility: hidden; /* Changed from display: none */
+  font-size: var(--fs-300);
+  margin-top: 6px;
+  font-weight: var(--fw-semi-bold);
+  padding-left: 44px;
+  height: 18px; /* Reserve space for the message */
+  line-height: 18px; /* Align the text within the reserved space */
 }
